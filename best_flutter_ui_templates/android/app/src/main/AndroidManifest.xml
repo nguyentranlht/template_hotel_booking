@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:label="best_flutter_ui_templates"
-        android:name="${applicationName}"
+        android:name="GOG"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
