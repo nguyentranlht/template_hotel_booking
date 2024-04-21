@@ -110,11 +110,11 @@ class _IntroductionAnimationScreenState
       _animationController?.animateTo(0.8);
     } else if (_animationController!.value > 0.6 &&
         _animationController!.value <= 0.8) {
-      _signUpClick();
+      _signInClick();
     }
   }
 
-  void _signUpClick() {
+  void _signInClick() {
     Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => LoginApp(FirebaseUserRepository())),

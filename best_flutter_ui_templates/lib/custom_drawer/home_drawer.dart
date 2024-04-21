@@ -152,6 +152,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
             height: 1,
             color: AppTheme.grey.withOpacity(0.6),
           ),
+          //Thêm nút Sign Out
           Column(
             children: <Widget>[
               ListTile(

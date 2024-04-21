@@ -1,7 +1,11 @@
+import 'package:best_flutter_ui_templates/blocs/sign_in_bloc/sign_in_bloc.dart';
+import 'package:best_flutter_ui_templates/custom_drawer/home_drawer.dart';
 import 'package:best_flutter_ui_templates/hotel_booking/calendar_popup_view.dart';
 import 'package:best_flutter_ui_templates/hotel_booking/hotel_list_view.dart';
 import 'package:best_flutter_ui_templates/hotel_booking/model/hotel_list_data.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'filters_screen.dart';
@@ -57,7 +61,19 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                 },
                 child: Column(
                   children: <Widget>[
+                    //Thêm đường dẫn sang HomeDrawer
                     getAppBarUI(),
+                    //sign out
+                    IconButton(
+                        onPressed: () {
+                          context
+                              .read<SignInBloc>()
+                              .add(const SignOutRequired());
+                        },
+                        icon: Icon(
+                          CupertinoIcons.square_arrow_right,
+                          color: Theme.of(context).colorScheme.onBackground,
+                        )),
                     Expanded(
                       child: NestedScrollView(
                         controller: _scrollController,
@@ -537,7 +553,9 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                     Radius.circular(32.0),
                   ),
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.pop(
+                      context,
+                      );
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),

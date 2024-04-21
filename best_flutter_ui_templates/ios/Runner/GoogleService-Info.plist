@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>858441629392-dmp24v2177ai72gn38cnspfekjev8k1h.apps.googleusercontent.com</string>
+	<string>1709540774-mtv3vu5e4399bnjvlnbg5gt2g72945kf.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.858441629392-dmp24v2177ai72gn38cnspfekjev8k1h</string>
+	<string>com.googleusercontent.apps.1709540774-mtv3vu5e4399bnjvlnbg5gt2g72945kf</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDDBq73sFikyREnX9ajVCHlYB1WAPYgGbw</string>
+	<string>AIzaSyDxG8yc9pFFc-3XYWROBzcSm5XWkA15lwI</string>
 	<key>GCM_SENDER_ID</key>
-	<string>858441629392</string>
+	<string>1709540774</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.bestFlutterUiTemplates</string>
 	<key>PROJECT_ID</key>
-	<string>dbtemplatehotelbooking</string>
+	<string>dbtemplatehotelbooking-5044d</string>
 	<key>STORAGE_BUCKET</key>
-	<string>dbtemplatehotelbooking.appspot.com</string>
+	<string>dbtemplatehotelbooking-5044d.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:858441629392:ios:05a3d8ba4ea936ecca28d5</string>
+	<string>1:1709540774:ios:2903d8ca86e06ddb2fbb67</string>
 </dict>
 </plist>

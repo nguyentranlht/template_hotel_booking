@@ -94,7 +94,7 @@ class CenterNextButton extends StatelessWidget {
                     },
                     child: _signUpMoveAnimation.value > 0.7
                         ? InkWell(
-                            key: ValueKey('Sign Up button'),
+                            key: ValueKey('Sign In button'),
                             onTap: onNextClick,
                             child: Padding(
                               padding: EdgeInsets.only(left: 16.0, right: 16.0),
@@ -103,7 +103,7 @@ class CenterNextButton extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'Sign Up',
+                                    'Sign In',
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
@@ -138,7 +138,7 @@ class CenterNextButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Already have an account? ',
+                    'Create an ',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 14,
@@ -146,11 +146,19 @@ class CenterNextButton extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Login',
+                    'Account ',
                     style: TextStyle(
                       color: Color(0xff132137),
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    '? ',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
                     ),
                   ),
                 ],
