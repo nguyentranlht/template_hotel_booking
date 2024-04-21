@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:best_flutter_ui_templates/blocs/authentication_bloc/authentication_bloc.dart';
 import 'package:user_repository/user_repository.dart';
 
-import 'app_view.dart';
+import 'login_app_view.dart';
 
-class MainApp extends StatelessWidget {
+class LoginApp extends StatelessWidget {
 	final UserRepository userRepository;
-  const MainApp(this.userRepository, {super.key});
+  const LoginApp(this.userRepository, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class MainApp extends StatelessWidget {
 					)
 				)
 			], 
-			child: const MyAppView()
+			child: const LoginAppView()
 		);
   }
 }

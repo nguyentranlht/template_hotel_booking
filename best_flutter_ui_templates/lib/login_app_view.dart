@@ -1,3 +1,4 @@
+import 'package:best_flutter_ui_templates/hotel_booking/hotel_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:best_flutter_ui_templates/blocs/my_user_bloc/my_user_bloc.dart';
@@ -7,8 +8,8 @@ import 'package:best_flutter_ui_templates/auth/welcome_screen.dart';
 
 import 'blocs/authentication_bloc/authentication_bloc.dart';
 
-class MyAppView extends StatelessWidget {
-  const MyAppView({super.key});
+class LoginAppView extends StatelessWidget {
+  const LoginAppView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,13 +51,8 @@ class MyAppView extends StatelessWidget {
 											myUserId: context.read<AuthenticationBloc>().state.user!.uid
 										)),
 									),
-									BlocProvider(
-										create: (context) => GetPostBloc(
-											postRepository: FirebasePostRepository()
-										)..add(GetPosts())
-									)
 								],
-							child: const HomeScreen(),
+							child: HotelHomeScreen(),
 						);
 					} else {
 						return const WelcomeScreen();

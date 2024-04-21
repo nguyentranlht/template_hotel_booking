@@ -1,3 +1,4 @@
+import 'package:best_flutter_ui_templates/login_app.dart';
 import 'package:best_flutter_ui_templates/introduction_animation/components/care_view.dart';
 import 'package:best_flutter_ui_templates/introduction_animation/components/center_next_button.dart';
 import 'package:best_flutter_ui_templates/introduction_animation/components/mood_diary_vew.dart';
@@ -5,7 +6,9 @@ import 'package:best_flutter_ui_templates/introduction_animation/components/rela
 import 'package:best_flutter_ui_templates/introduction_animation/components/splash_view.dart';
 import 'package:best_flutter_ui_templates/introduction_animation/components/top_back_skip_view.dart';
 import 'package:best_flutter_ui_templates/introduction_animation/components/welcome_view.dart';
+import 'package:best_flutter_ui_templates/auth/welcome_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:user_repository/user_repository.dart';
 
 class IntroductionAnimationScreen extends StatefulWidget {
   const IntroductionAnimationScreen({Key? key}) : super(key: key);
@@ -112,6 +115,9 @@ class _IntroductionAnimationScreenState
   }
 
   void _signUpClick() {
-    Navigator.pop(context);
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => LoginApp(FirebaseUserRepository())),
+  );
   }
 }

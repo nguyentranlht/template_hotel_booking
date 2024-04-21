@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "858441629392",
+    "project_id": "dbtemplatehotelbooking",
+    "storage_bucket": "dbtemplatehotelbooking.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858441629392:android:c2b91c76dfc8458cca28d5",
+        "android_client_info": {
+          "package_name": "com.example.bestFlutterUiTemplates"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858441629392-80v22febl1lq5ama7h8e4gghvuskf1j3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7_tJlaXGivbv0d0juS4bNsBjsDiN-sOM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858441629392-80v22febl1lq5ama7h8e4gghvuskf1j3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "858441629392-dmp24v2177ai72gn38cnspfekjev8k1h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bestFlutterUiTemplates"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,12 +1,18 @@
 import 'dart:io';
 import 'package:best_flutter_ui_templates/app_theme.dart';
+import 'package:best_flutter_ui_templates/introduction_animation/introduction_animation_screen.dart';
+import 'package:best_flutter_ui_templates/simple_bloc_observer.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'navigation_home_screen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+	await Firebase.initializeApp();
+	Bloc.observer = SimpleBlocObserver();
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
@@ -33,7 +39,7 @@ class MyApp extends StatelessWidget {
         textTheme: AppTheme.textTheme,
         platform: TargetPlatform.iOS,
       ),
-      home: NavigationHomeScreen(),
+      home: IntroductionAnimationScreen(),
     );
   }
 }
