@@ -1,5 +1,5 @@
 # template_hotel_booking
-<h1>Dealine vào ngày thứ 4</h1>
+<h1 style="color: red">Dealine vào ngày thứ 4</h1>
 <h2>Tân</h2>
 Chỉnh sửa giao diện hotel_home</br>
 Thêm đường dẫn sang HomeDrawer</br>
