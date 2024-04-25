@@ -12,6 +12,7 @@ import 'filters_screen.dart';
 import 'hotel_app_theme.dart';
 
 class HotelHomeScreen extends StatefulWidget {
+  const HotelHomeScreen({Key? key}) : super(key: key);
   @override
   _HotelHomeScreenState createState() => _HotelHomeScreenState();
 }
@@ -63,17 +64,6 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                   children: <Widget>[
                     //Thêm đường dẫn sang HomeDrawer
                     getAppBarUI(),
-                    //sign out
-                    IconButton(
-                        onPressed: () {
-                          context
-                              .read<SignInBloc>()
-                              .add(const SignOutRequired());
-                        },
-                        icon: Icon(
-                          CupertinoIcons.square_arrow_right,
-                          color: Theme.of(context).colorScheme.onBackground,
-                        )),
                     Expanded(
                       child: NestedScrollView(
                         controller: _scrollController,
@@ -551,15 +541,6 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                 child: InkWell(
                   borderRadius: const BorderRadius.all(
                     Radius.circular(32.0),
-                  ),
-                  onTap: () {
-                    Navigator.pop(
-                      context,
-                      );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(Icons.arrow_back),
                   ),
                 ),
               ),

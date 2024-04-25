@@ -1,5 +1,7 @@
 import 'package:best_flutter_ui_templates/app_theme.dart';
+import 'package:best_flutter_ui_templates/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer(
@@ -185,7 +187,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
   }
 
   void onTapped() {
-    print('Doing Something...'); // Print to console.
+    context
+        .read<SignInBloc>()
+        .add(const SignOutRequired()); // Print to console.
   }
 
   Widget inkwell(DrawerList listData) {

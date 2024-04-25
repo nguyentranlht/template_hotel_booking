@@ -1,4 +1,5 @@
 import 'package:best_flutter_ui_templates/hotel_booking/hotel_home_screen.dart';
+import 'package:best_flutter_ui_templates/navigation_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:best_flutter_ui_templates/blocs/my_user_bloc/my_user_bloc.dart';
@@ -52,7 +53,7 @@ class LoginAppView extends StatelessWidget {
 										)),
 									),
 								],
-							child: HotelHomeScreen(),
+							child: NavigationHomeScreen(),
 						);
 					} else {
 						return const WelcomeScreen();

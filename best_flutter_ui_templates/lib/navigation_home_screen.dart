@@ -20,7 +20,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
   @override
   void initState() {
     drawerIndex = DrawerIndex.HOME;
-    screenView = const MyHomePage();
+    screenView = const HotelHomeScreen();
     super.initState();
   }
 
@@ -55,7 +55,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
         // chuyển sang trang HotelHomeScreen
         case DrawerIndex.HOME:
           setState(() {
-            screenView = const MyHomePage();
+            screenView = const HotelHomeScreen();
           });
           break;
         case DrawerIndex.Help:
