@@ -62,7 +62,6 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                 },
                 child: Column(
                   children: <Widget>[
-                    //Thêm đường dẫn sang HomeDrawer
                     getAppBarUI(),
                     Expanded(
                       child: NestedScrollView(
