@@ -1,8 +1,10 @@
 import 'package:best_flutter_ui_templates/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:best_flutter_ui_templates/custom_drawer/home_drawer.dart';
 import 'package:best_flutter_ui_templates/hotel_booking/calendar_popup_view.dart';
+import 'package:best_flutter_ui_templates/hotel_booking/details/hotel_details_screen.dart';
 import 'package:best_flutter_ui_templates/hotel_booking/hotel_list_view.dart';
 import 'package:best_flutter_ui_templates/hotel_booking/model/hotel_list_data.dart';
+import 'package:best_flutter_ui_templates/navigation_home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,6 +51,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
       data: HotelAppTheme.buildLightTheme(),
       child: Container(
         child: Scaffold(
+          
           body: Stack(
             children: <Widget>[
               InkWell(
@@ -57,7 +60,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                 highlightColor: Colors.transparent,
                 hoverColor: Colors.transparent,
                 onTap: () {
-                  FocusScope.of(context).requestFocus(FocusNode());
+                  context.read<SignInBloc>().add(const SignOutRequired());
                 },
                 child: Column(
                   children: <Widget>[
@@ -85,6 +88,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                                   (BuildContext context, int index) {
                                 return Column(
                                   children: <Widget>[
+                                    
                                     getSearchBarUI(),
                                     getTimeDateUI(),
                                   ],
@@ -204,7 +208,14 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
       );
       hotelListViews.add(
         HotelListView(
-          callback: () {},
+          callback: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailsScreen(), // Thay DetailsScreen() bằng màn hình chi tiết tương ứng
+              ),
+            );
+          },
           hotelData: hotelList[i],
           animation: animation,
           animationController: animationController!,
@@ -526,7 +537,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
     );
   }
 
-  Widget getAppBarUI() {
+  Widget getAppBarUI() {  
     return Container(
       decoration: BoxDecoration(
         color: HotelAppTheme.buildLightTheme().backgroundColor,
