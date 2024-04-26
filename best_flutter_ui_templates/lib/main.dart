@@ -32,14 +32,14 @@ class MyApp extends StatelessWidget {
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
     return MaterialApp(
-      title: 'Flutter UI',
+      title: 'Hotel Booking',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         textTheme: AppTheme.textTheme,
         platform: TargetPlatform.iOS,
       ),
-      home: IntroductionAnimationScreen(),
+      home: const IntroductionAnimationScreen(),
     );
   }
 }

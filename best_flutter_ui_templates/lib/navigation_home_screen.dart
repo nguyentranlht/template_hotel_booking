@@ -52,7 +52,6 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
     if (drawerIndex != drawerIndexdata) {
       drawerIndex = drawerIndexdata;
       switch (drawerIndex) {
-        // chuyển sang trang HotelHomeScreen
         case DrawerIndex.HOME:
           setState(() {
             screenView = const HotelHomeScreen();
