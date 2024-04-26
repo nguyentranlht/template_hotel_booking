@@ -17,8 +17,8 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       backgroundColor: Colors.grey[200],
-      
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -57,10 +57,7 @@ class DetailsScreen extends StatelessWidget {
               image: AssetImage('assets/hotel/hotel_1.png'),
               fit: BoxFit.cover,
             ),
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30),
-            ),
+            borderRadius: BorderRadius.all(Radius.circular(16.0)),
           ),
         ),
         Positioned(
@@ -146,7 +143,8 @@ class DetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget buildAmenities(String title, IconData icon, String text, BuildContext context) {
+  Widget buildAmenities(
+      String title, IconData icon, String text, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
@@ -165,6 +163,3 @@ class DetailsScreen extends StatelessWidget {
     );
   }
 }
-
-
-
