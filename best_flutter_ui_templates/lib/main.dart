@@ -12,13 +12,13 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 	await Firebase.initializeApp(
-      options: const FirebaseOptions(
-      apiKey: 'AIzaSyDdweKvK6nDZa74DlhRBo4DW2j3t6CkxAA',
-      appId: '1:1709540774:android:ee4a1c80c9184f062fbb67',
-      messagingSenderId: '1709540774',
-      projectId: 'dbtemplatehotelbooking-5044d',
-      storageBucket: 'dbtemplatehotelbooking-5044d.appspot.com',
-    )
+    //   options: const FirebaseOptions(
+    //   apiKey: 'AIzaSyDdweKvK6nDZa74DlhRBo4DW2j3t6CkxAA',
+    //   appId: '1:1709540774:android:ee4a1c80c9184f062fbb67',
+    //   messagingSenderId: '1709540774',
+    //   projectId: 'dbtemplatehotelbooking-5044d',
+    //   storageBucket: 'dbtemplatehotelbooking-5044d.appspot.com',
+    // )
   );
 	Bloc.observer = SimpleBlocObserver();
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
