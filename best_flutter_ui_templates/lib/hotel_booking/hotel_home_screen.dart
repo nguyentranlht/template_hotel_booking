@@ -61,7 +61,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                 highlightColor: Colors.transparent,
                 hoverColor: Colors.transparent,
                 onTap: () {
-                  context.read<SignInBloc>().add(const SignOutRequired());
+                  FocusScope.of(context).requestFocus(FocusNode());
                 },
                 child: Column(
                   children: <Widget>[
