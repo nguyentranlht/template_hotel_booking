@@ -46,6 +46,8 @@ dependencies:
     # Custom Repository
     user_repository:
       path: packages/user_repository
+    hotel_repository:
+      path: packages/hotel_repository
 
 dev_dependencies:
     flutter_test:

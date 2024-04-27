@@ -1,49 +1,49 @@
+import 'dart:html';
+import '../entities/entities.dart';
+import '../models/model.dart';
+
 class Hotel {
   String hotelId;
   String picture;
   String titleTxt;
-  String subTxt;
-  double dist;
   double rating;
   int reviews;
   double perNight;
   double discount;
-  Hotel(
-    this.hotelId,
-    this.picture ,
-    this.titleTxt,
-    this.subTxt,
-    this.dist,
-    this.reviews,
-    this.rating,
-    this.perNight,
-    this.discount,
-  );
+  List<Location> location;
+  Hotel({
+    required this.hotelId,
+    required this.picture,
+    required this.titleTxt,
+    required this.reviews,
+    required this.rating,
+    required this.perNight,
+    required this.discount,
+    required this.location,
+  });
   HotelEntity toEntity() {
     return HotelEntity(
       hotelId: hotelId,
       picture: picture,
       titleTxt: titleTxt,
-      subTxt: subTxt,
-      dist: dist,
       reviews: reviews,
       rating: rating,
       perNight: perNight,
       discount: discount,
+      location: location,
     );
   }
 
-	static Hotel fromEntity(HotelEntity entity) {
+  static Hotel fromEntity(HotelEntity entity) {
     return Hotel(
       hotelId: entity.hotelId,
       picture: entity.picture,
       titleTxt: entity.titleTxt,
-      subTxt: entity.subTxt,
-      dist: entity.dist,
       reviews: entity.reviews,
       rating: entity.rating,
       perNight: entity.perNight,
       discount: entity.discount,
+      location: entity.location,
     );
   }
 }
