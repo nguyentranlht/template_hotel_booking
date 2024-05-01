@@ -1,3 +1,4 @@
+import 'package:best_flutter_ui_templates/blocs/get_hotel_bloc/get_hotel_bloc.dart';
 import 'package:best_flutter_ui_templates/hotel_booking/hotel_home_screen.dart';
 import 'package:best_flutter_ui_templates/navigation_home_screen.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:best_flutter_ui_templates/blocs/my_user_bloc/my_user_bloc.dart';
 import 'package:best_flutter_ui_templates/blocs/sign_in_bloc/sign_in_bloc.dart';
 import 'package:best_flutter_ui_templates/blocs/update_user_info_bloc/update_user_info_bloc.dart';
 import 'package:best_flutter_ui_templates/auth/welcome_screen.dart';
+import 'package:hotel_repository/hotel_repository.dart';
 
 import 'blocs/authentication_bloc/authentication_bloc.dart';
 
@@ -51,6 +53,11 @@ class LoginAppView extends StatelessWidget {
 										)..add(GetMyUser(
 											myUserId: context.read<AuthenticationBloc>().state.user!.uid
 										)),
+									),
+                  BlocProvider(
+										create: (context) => GetHotelBloc(
+											FirebaseHotelRepo()
+										)..add(GetHotel()),
 									),
 								],
 							child: NavigationHomeScreen(),

@@ -1,4 +1,4 @@
-import 'dart:html';
+//import 'dart:html';
 import '../entities/entities.dart';
 import '../models/model.dart';
 
@@ -10,7 +10,7 @@ class Hotel {
   int reviews;
   double perNight;
   double discount;
-  List<Location> location;
+  Location location;
   Hotel({
     required this.hotelId,
     required this.picture,

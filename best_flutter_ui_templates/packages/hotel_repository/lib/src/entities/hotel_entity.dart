@@ -9,7 +9,7 @@ class HotelEntity {
   int reviews;
   double perNight;
   double discount;
-  List <Location> location;
+  Location location;
   HotelEntity({
     required this.hotelId,
     required this.picture,
@@ -29,7 +29,7 @@ class HotelEntity {
       'rating': rating,
       'perNight': perNight,
       'discount': discount,
-      'location': location.map((location) => location.toEntity().toDocument()),
+      'location': location.toEntity().toDocument(),
     };
   }
 
@@ -42,7 +42,7 @@ class HotelEntity {
       rating: doc['rating'],
       perNight: doc['perNight'],
       discount: doc['discount'],
-      location: doc['location'].map((e) => Location.fromEntity(LocationEntity.fromDocument(e))),
+      location: Location.fromEntity(LocationEntity.fromDocument(doc['location'])),
     );
   }
 }
