@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hotel_repository/hotel_repository.dart';
 
 class FirebaseHotelRepo implements HotelRepo {
-  final hotelCollection = FirebaseFirestore.instance.collection('hotel');
+  final hotelCollection = FirebaseFirestore.instance.collection('hotels');
   Future <List<Hotel>> getHotels() async{
     try {
       return await hotelCollection
