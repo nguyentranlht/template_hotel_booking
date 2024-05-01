@@ -7,8 +7,8 @@ class HotelEntity {
   String titleTxt;
   double rating;
   int reviews;
-  double perNight;
-  double discount;
+  int perNight;
+  int discount;
   Location location;
   HotelEntity({
     required this.hotelId,

@@ -8,8 +8,8 @@ class Hotel {
   String titleTxt;
   double rating;
   int reviews;
-  double perNight;
-  double discount;
+  int perNight;
+  int discount;
   Location location;
   Hotel({
     required this.hotelId,

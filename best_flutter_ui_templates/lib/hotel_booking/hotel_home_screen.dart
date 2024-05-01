@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import '../blocs/get_hotel_bloc/get_hotel_bloc.dart';
 import 'filters_screen.dart';
 import 'hotel_app_theme.dart';
 
@@ -52,7 +53,6 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
       data: HotelAppTheme.buildLightTheme(),
       child: Container(
         child: Scaffold(
-          
           body: Stack(
             children: <Widget>[
               InkWell(
@@ -77,7 +77,6 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                                   (BuildContext context, int index) {
                                 return Column(
                                   children: <Widget>[
-                                    
                                     getSearchBarUI(),
                                     getTimeDateUI(),
                                   ],
@@ -96,27 +95,44 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                         body: Container(
                           color:
                               HotelAppTheme.buildLightTheme().backgroundColor,
-                          child: ListView.builder(
-                            itemCount: hotelList.length,
-                            padding: const EdgeInsets.only(top: 8),
-                            scrollDirection: Axis.vertical,
-                            itemBuilder: (BuildContext context, int index) {
-                              final int count =
-                                  hotelList.length > 10 ? 10 : hotelList.length;
-                              final Animation<double> animation =
-                                  Tween<double>(begin: 0.0, end: 1.0).animate(
-                                      CurvedAnimation(
-                                          parent: animationController!,
-                                          curve: Interval(
-                                              (1 / count) * index, 1.0,
-                                              curve: Curves.fastOutSlowIn)));
-                              animationController?.forward();
-                              return HotelListView(
-                                callback: () {},
-                                hotelData: hotelList[index],
-                                animation: animation,
-                                animationController: animationController!,
-                              );
+                          child: BlocBuilder<GetHotelBloc, GetHotelState>(
+                            builder: (context, state) {
+                              if (state is GetHotelSuccess) {
+                                return ListView.builder(
+                                  itemCount: state.hotels.length,
+                                  padding: const EdgeInsets.only(top: 8),
+                                  scrollDirection: Axis.vertical,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    final int count = state.hotels.length > 10
+                                        ? 10
+                                        : state.hotels.length;
+                                    final Animation<double> animation =
+                                        Tween<double>(begin: 0.0, end: 1.0)
+                                            .animate(CurvedAnimation(
+                                                parent: animationController!,
+                                                curve: Interval(
+                                                    (1 / count) * index, 1.0,
+                                                    curve:
+                                                        Curves.fastOutSlowIn)));
+                                    animationController?.forward();
+                                    return HotelListView(
+                                      callback: () {},
+                                      hotelData: state.hotels[index],
+                                      animation: animation,
+                                      animationController: animationController!,
+                                    );
+                                  },
+                                );
+                              } else if (state is GetHotelLoading) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              } else {
+                                return const Center(
+                                  child: Text("An error has occured..."),
+                                );
+                              }
                             },
                           ),
                         ),
@@ -132,90 +148,90 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
     );
   }
 
-  Widget getListUI() {
-    return Container(
-      decoration: BoxDecoration(
-        color: HotelAppTheme.buildLightTheme().backgroundColor,
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              offset: const Offset(0, -2),
-              blurRadius: 8.0),
-        ],
-      ),
-      child: Column(
-        children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height - 156 - 50,
-            child: FutureBuilder<bool>(
-              future: getData(),
-              builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-                if (!snapshot.hasData) {
-                  return const SizedBox();
-                } else {
-                  return ListView.builder(
-                    itemCount: hotelList.length,
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (BuildContext context, int index) {
-                      final int count =
-                          hotelList.length > 10 ? 10 : hotelList.length;
-                      final Animation<double> animation =
-                          Tween<double>(begin: 0.0, end: 1.0).animate(
-                              CurvedAnimation(
-                                  parent: animationController!,
-                                  curve: Interval((1 / count) * index, 1.0,
-                                      curve: Curves.fastOutSlowIn)));
-                      animationController?.forward();
+  // Widget getListUI() {
+  //   return Container(
+  //     decoration: BoxDecoration(
+  //       color: HotelAppTheme.buildLightTheme().backgroundColor,
+  //       boxShadow: <BoxShadow>[
+  //         BoxShadow(
+  //             color: Colors.grey.withOpacity(0.2),
+  //             offset: const Offset(0, -2),
+  //             blurRadius: 8.0),
+  //       ],
+  //     ),
+  //     child: Column(
+  //       children: <Widget>[
+  //         Container(
+  //           height: MediaQuery.of(context).size.height - 156 - 50,
+  //           child: FutureBuilder<bool>(
+  //             future: getData(),
+  //             builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+  //               if (!snapshot.hasData) {
+  //                 return const SizedBox();
+  //               } else {
+  //                 return ListView.builder(
+  //                   itemCount: hotelList.length,
+  //                   scrollDirection: Axis.vertical,
+  //                   itemBuilder: (BuildContext context, int index) {
+  //                     final int count =
+  //                         hotelList.length > 10 ? 10 : hotelList.length;
+  //                     final Animation<double> animation =
+  //                         Tween<double>(begin: 0.0, end: 1.0).animate(
+  //                             CurvedAnimation(
+  //                                 parent: animationController!,
+  //                                 curve: Interval((1 / count) * index, 1.0,
+  //                                     curve: Curves.fastOutSlowIn)));
+  //                     animationController?.forward();
 
-                      return HotelListView(
-                        callback: () {},
-                        hotelData: hotelList[index],
-                        animation: animation,
-                        animationController: animationController!,
-                      );
-                    },
-                  );
-                }
-              },
-            ),
-          )
-        ],
-      ),
-    );
-  }
+  //                     return HotelListView(
+  //                       callback: () {},
+  //                       hotelData: hotelList[index],
+  //                       animation: animation,
+  //                       animationController: animationController!,
+  //                     );
+  //                   },
+  //                 );
+  //               }
+  //             },
+  //           ),
+  //         )
+  //       ],
+  //     ),
+  //   );
+  // }
 
-  Widget getHotelViewList() {
-    final List<Widget> hotelListViews = <Widget>[];
-    for (int i = 0; i < hotelList.length; i++) {
-      final int count = hotelList.length;
-      final Animation<double> animation =
-          Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(
-          parent: animationController!,
-          curve: Interval((1 / count) * i, 1.0, curve: Curves.fastOutSlowIn),
-        ),
-      );
-      hotelListViews.add(
-        HotelListView(
-          callback: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => DetailsScreen(), // Thay DetailsScreen() bằng màn hình chi tiết tương ứng
-              ),
-            );
-          },
-          hotelData: hotelList[i],
-          animation: animation,
-          animationController: animationController!,
-        ),
-      );
-    }
-    animationController?.forward();
-    return Column(
-      children: hotelListViews,
-    );
-  }
+  // Widget getHotelViewList() {
+  //   final List<Widget> hotelListViews = <Widget>[];
+  //   for (int i = 0; i < hotelList.length; i++) {
+  //     final int count = hotelList.length;
+  //     final Animation<double> animation =
+  //         Tween<double>(begin: 0.0, end: 1.0).animate(
+  //       CurvedAnimation(
+  //         parent: animationController!,
+  //         curve: Interval((1 / count) * i, 1.0, curve: Curves.fastOutSlowIn),
+  //       ),
+  //     );
+  //     hotelListViews.add(
+  //       HotelListView(
+  //         callback: () {
+  //           Navigator.push(
+  //             context,
+  //             MaterialPageRoute(
+  //               builder: (context) => DetailsScreen(), // Thay DetailsScreen() bằng màn hình chi tiết tương ứng
+  //             ),
+  //           );
+  //         },
+  //         hotelData: hotelList[i],
+  //         animation: animation,
+  //         animationController: animationController!,
+  //       ),
+  //     );
+  //   }
+  //   animationController?.forward();
+  //   return Column(
+  //     children: hotelListViews,
+  //   );
+  // }
 
   Widget getTimeDateUI() {
     return Padding(
@@ -526,7 +542,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
     );
   }
 
-  Widget getAppBarUI() {  
+  Widget getAppBarUI() {
     return Container(
       decoration: BoxDecoration(
         color: HotelAppTheme.buildLightTheme().backgroundColor,
