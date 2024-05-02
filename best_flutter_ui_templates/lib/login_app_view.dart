@@ -57,7 +57,7 @@ class LoginAppView extends StatelessWidget {
                   BlocProvider(
 										create: (context) => GetHotelBloc(
 											FirebaseHotelRepo()
-										)..add(GetHotel()),
+										)..add(GetHotels()),
 									),
 								],
 							child: NavigationHomeScreen(),

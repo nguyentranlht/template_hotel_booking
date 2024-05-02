@@ -1,19 +1,19 @@
-import 'dart:math';
+import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hotel_repository/hotel_repository.dart';
+import 'package:hotel_repository/src/models/hotel.dart';
 
 class FirebaseHotelRepo implements HotelRepo {
   final hotelCollection = FirebaseFirestore.instance.collection('hotels');
-  Future <List<Hotel>> getHotels() async{
+  @override
+  Future<List<Hotel>> getHotels() async {
     try {
-      return await hotelCollection
-      .get()
-      .then((value) => value.docs.map((e) => 
-      Hotel.fromEntity(HotelEntity.fromDocument(e.data()))
-      ).toList());
+      return hotelCollection.get().then((value) => value.docs
+          .map((e) => Hotel.fromEntity(HotelEntity.fromDocument(e.data())))
+          .toList());
     } catch (e) {
-      log(e.toString() as num);
+      log(e.toString());
       rethrow;
     }
   }

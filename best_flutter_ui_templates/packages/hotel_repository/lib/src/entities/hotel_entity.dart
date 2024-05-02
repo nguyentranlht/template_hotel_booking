@@ -35,14 +35,15 @@ class HotelEntity {
 
   static HotelEntity fromDocument(Map<String, dynamic> doc) {
     return HotelEntity(
-      hotelId: doc['hotelId'],
-      picture: doc['picture'],
-      titleTxt: doc['titleTxt'],
-      reviews: doc['reviews'],
-      rating: doc['rating'],
-      perNight: doc['perNight'],
-      discount: doc['discount'],
-      location: Location.fromEntity(LocationEntity.fromDocument(doc['location'])),
+      hotelId: doc['hotelId'] as String,
+      picture: doc['picture'] as String,
+      titleTxt: doc['titleTxt'] as String,
+      reviews: doc['reviews'] as int,
+      rating: doc['rating'] as double,
+      perNight: doc['perNight'] as int,
+      discount: doc['discount'] as int,
+      location:
+          Location.fromEntity(LocationEntity.fromDocument(doc['location'])),
     );
   }
 }
