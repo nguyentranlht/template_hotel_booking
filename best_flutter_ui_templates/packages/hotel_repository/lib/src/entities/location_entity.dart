@@ -14,8 +14,8 @@ class LocationEntity {
 
   static LocationEntity fromDocument(Map<String, dynamic> doc) {
     return LocationEntity(
-      dist: doc['dist'],
-      address: doc['address'],
+      dist: doc['dist'] as double,
+      address: doc['address'] as String,
     );
   }
 }

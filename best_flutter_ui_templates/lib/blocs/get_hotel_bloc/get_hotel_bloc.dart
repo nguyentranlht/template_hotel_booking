@@ -8,7 +8,7 @@ class GetHotelBloc extends Bloc<GetHotelEvent, GetHotelState> {
   HotelRepo _hotelRepo;
 
   GetHotelBloc(this._hotelRepo) : super(GetHotelInitial()) {
-    on<GetHotel>((event, emit) async{
+    on<GetHotels>((event, emit) async {
       emit(GetHotelLoading());
       try {
         List<Hotel> hotels = await _hotelRepo.getHotels();

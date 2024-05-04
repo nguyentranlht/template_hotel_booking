@@ -3,6 +3,7 @@ import 'package:best_flutter_ui_templates/hotel_booking/details/hotel_details_sc
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hotel_repository/hotel_repository.dart';
 import 'model/hotel_list_data.dart';
 
 class HotelListView extends StatelessWidget {
@@ -15,7 +16,7 @@ class HotelListView extends StatelessWidget {
       : super(key: key);
 
   final VoidCallback? callback;
-  final HotelListData? hotelData;
+  final Hotel? hotelData;
   final AnimationController? animationController;
   final Animation<double>? animation;
 
@@ -61,8 +62,8 @@ class HotelListView extends StatelessWidget {
                           children: <Widget>[
                             AspectRatio(
                               aspectRatio: 2,
-                              child: Image.asset(
-                                hotelData!.imagePath,
+                              child: Image.network(
+                                hotelData!.picture,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -99,7 +100,7 @@ class HotelListView extends StatelessWidget {
                                                   MainAxisAlignment.start,
                                               children: <Widget>[
                                                 Text(
-                                                  hotelData!.subTxt,
+                                                  hotelData!.location.address,
                                                   style: TextStyle(
                                                       fontSize: 14,
                                                       color: Colors.grey
@@ -117,7 +118,7 @@ class HotelListView extends StatelessWidget {
                                                 ),
                                                 Expanded(
                                                   child: Text(
-                                                    '${hotelData!.dist.toStringAsFixed(1)} km to city',
+                                                    '${hotelData!.location.dist.toStringAsFixed(1)} km to city',
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     style: TextStyle(
